@@ -1,0 +1,52 @@
+﻿@using MVPClanManagementSystem.Models
+@model IEnumerable<MVPClanManagementSystem.Models.Weekly>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Weekly Reward</h2>
+<p>
+    @Html.ActionLink("New Week", "", "", new { @class = "btn btn-primary" })
+</p>
+<h3>
+    Click on the table row to view weekly reward details
+</h3>
+
+@if (!@Model.Any())
+{
+    <text>We don't have any weekly data yet.</text>
+}
+else
+{
+    <table class="table	table-bordered	table-hover">
+        <tr>
+            <th>Week No</th>
+            <th>Start Date (AEST)</th>
+            <th>End Date (AEST)</th>
+        </tr>
+        @foreach (var item in @Model)
+        {
+        <tr style="cursor:pointer" onclick="location.href = '@(Url.Action("Detail", "Weeklys" , new { weekNo=item.WeekNo}))'">
+
+            <td>
+                @item.WeekNo
+                @if (DateTime.Now.DayOfYear / 7 == item.WeekNo)
+                {
+                    <span class="badge badge-pill badge-success">Current</span>
+                }
+            </td>
+            <td>
+                @item.StartDate
+            </td>
+            <td>
+                @item.EndDate
+            </td>
+        </tr>
+        }
+    </table>
+
+
+}
+

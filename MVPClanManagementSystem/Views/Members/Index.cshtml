@@ -1,0 +1,85 @@
+﻿@using MVPClanManagementSystem.Models
+@model IEnumerable<MVPClanManagementSystem.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Members</h2>
+<p>
+    @Html.ActionLink("New Member", "", "", new {@class="btn btn-primary"})
+</p>
+<h3>
+    Click on the table row to view player details
+</h3>
+@if (!@Model.Any())
+{
+    <text>We don't have any members yet.</text>
+}
+else
+{
+    <table class="table	table-bordered	table-hover">
+        <tr>
+            <th>Player Name</th>
+            <th>Class</th>
+            <th>Level</th>
+            <th>Team</th>
+            <th>Combat Power</th>
+            <th>Contribution</th>
+            <th>Joining Date</th>
+            <th>Active</th>
+            <th>Rank</th>
+            <th>Email</th>
+            <th>Discord Id</th>
+            <th>Last Update</th>
+
+        </tr>
+
+        @foreach (var member in @Model)
+        {
+            <tr style="cursor:pointer" onclick="location.href = '@(Url.Action("Detail", "Members", new { playerName = member.PlayerName}))'">
+                <td>
+                    @member.PlayerName
+                    @*@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)*@
+                </td>
+                <td>
+                    @member.Class
+                </td>
+                <td>
+                    @member.Level
+                </td>
+                <td>
+                    @member.Team
+                </td>
+                <td>
+                    @member.CombatPower
+                </td>
+                <td>
+                    @member.Contribution
+                </td>
+                <td>
+                    @member.JoiningDate
+                </td>
+                <td>
+                    @member.Active
+                </td>
+                <td>
+                    @member.Rank
+                </td>
+                <td>
+                    @member.Email
+                </td>
+                <td>
+                    @member.DiscordId
+                </td>
+                <td>
+                    @member.LastUpdate
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+}

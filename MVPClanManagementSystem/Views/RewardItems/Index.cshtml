@@ -1,0 +1,58 @@
+﻿@using MVPClanManagementSystem.Models
+@model IEnumerable<MVPClanManagementSystem.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reward Items</h2>
+<p>
+    @Html.ActionLink("New Item", "", "", new { @class = "btn btn-primary" })
+</p>
+
+@if (!@Model.Any())
+{
+    <text>We don't have any items yet.</text>
+}
+else
+{
+    <table class="table	table-bordered	table-hover">
+        <tr>
+            <th>Item Name</th>
+            <th>Available Quantity</th>
+            <th>Redeem Cost</th>
+            <th>Notes</th>
+            <th>Max Claim Per Month</th>
+            <th>Grade</th>
+        </tr>
+
+        @foreach (var i in @Model)
+        {
+            <tr>
+                <td>
+                    @i.Name
+                </td>
+                <td>
+                    @i.AvailableQty
+                </td>
+                <td>
+                    @i.Cost
+                </td>
+                <td>
+                    @i.Note
+                </td>
+                <td>
+                    @i.MaxClaimPerMonth
+                </td>
+                <td>
+                    @i.Grade
+                </td>
+            </tr>
+        }
+    </table>
+
+
+}
+
+

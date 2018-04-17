@@ -1,0 +1,57 @@
+﻿@using MVPClanManagementSystem.Models
+@model IEnumerable<MVPClanManagementSystem.Models.WeeklyReward>
+
+    @{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Week 15</h2>
+
+
+    @if (!@Model.Any())
+    {
+    <text>We don't have any weekly rewards yet.</text>
+    }
+    else
+    {
+    <table class="table	table-bordered	table-hover">
+        <tr>
+            <th>Player Name</th>
+            <th>Contribution Point</th>
+            <th>RequestedItems</th>
+            <th>Remaining</th>
+            <th>Reward Given?</th>
+        </tr>
+
+        @foreach (var weeklyReward in @Model)
+        {
+        <tr>
+            <td>
+                @weeklyReward.PlayerName
+            </td>
+            <td>
+                @weeklyReward.Contribution
+            </td>
+            <td>
+                <ul>
+                    @foreach (var requestedItem in weeklyReward.RequestedItems)
+                    {
+                        <li>@requestedItem.Name ($@requestedItem.Cost) * @requestedItem.Qty</li>
+                    }
+                </ul>                
+            </td>
+            <td>
+                @weeklyReward.Remaining
+            </td>
+            <td>
+                @weeklyReward.RewardGiven
+            </td>
+        </tr>
+        }
+    </table>
+
+
+    }
+
+

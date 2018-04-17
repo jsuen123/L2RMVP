@@ -1,0 +1,23 @@
+﻿@using MVPClanManagementSystem.Models
+@model  MVPClanManagementSystem.Models.Member
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.PlayerName</h2>
+
+<ul>
+    <li>Class: @Model.Class</li>
+    <li>Level: @Model.Level</li>
+    <li>Team: @Model.Team</li>
+    <li>Combat Power: @Model.CombatPower</li>
+    <li>Contribution: @Model.Contribution</li>
+    <li>Joining Date: @Model.JoiningDate</li>
+    <li>Active: @Model.Active</li>
+    <li>Rank: @Model.Rank</li>
+    <li>Email: @Model.Email</li>
+    <li>Discord Id: @Model.DiscordId</li>
+    <li>Last Update: @Model.LastUpdate</li>
+
+</ul>
